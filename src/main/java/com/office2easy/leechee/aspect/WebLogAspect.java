@@ -41,17 +41,12 @@ public class WebLogAspect {
     }
 
     @Around("pointcut()")
-    public Object around(ProceedingJoinPoint point) {
-        try {
-            long beginTime = System.currentTimeMillis();
-            Object proceed = point.proceed();
-            long time = System.currentTimeMillis() - beginTime;
-            saveLog(point, time);
-            return proceed;
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
-        return R.error().message("系统异常");
+    public Object around(ProceedingJoinPoint point) throws Throwable {
+        long beginTime = System.currentTimeMillis();
+        Object proceed = point.proceed();
+        long time = System.currentTimeMillis() - beginTime;
+        saveLog(point, time);
+        return proceed;
     }
 
     private void saveLog(ProceedingJoinPoint joinPoint, long time) {
