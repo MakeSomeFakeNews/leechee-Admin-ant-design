@@ -15,6 +15,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.util.ObjectUtils;
@@ -43,6 +44,7 @@ public class AuthController {
 
     private final RedisTemplate<String, Object> redisTemplate;
 
+    @Autowired
     public AuthController(ISysUserService userService, DefaultKaptcha producer, RedisTemplate<String, Object> redisTemplate) {
         this.userService = userService;
         this.producer = producer;
@@ -64,6 +66,7 @@ public class AuthController {
         SysUser sysUser = new SysUser();
         BeanUtils.copyProperties(authVo, sysUser);
         SysUser user = userService.getOne(new LambdaQueryWrapper<SysUser>().eq(SysUser::getUsername, authVo.getUsername()));
+        log.info("user:{}", user);
         if (ObjectUtils.isEmpty(user)) {
             throw new LCException("用户不存在");
         }

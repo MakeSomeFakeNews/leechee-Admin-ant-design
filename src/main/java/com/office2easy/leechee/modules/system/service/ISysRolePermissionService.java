@@ -1,7 +1,11 @@
 package com.office2easy.leechee.modules.system.service;
 
+import com.office2easy.leechee.modules.system.model.SysPermission;
+import com.office2easy.leechee.modules.system.model.SysRole;
 import com.office2easy.leechee.modules.system.model.SysRolePermission;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +17,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ISysRolePermissionService extends IService<SysRolePermission> {
 
+    void savePermissions(SysPermission permission, List<SysRole> userRoleList);
 }

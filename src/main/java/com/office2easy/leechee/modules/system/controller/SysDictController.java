@@ -4,15 +4,12 @@ package com.office2easy.leechee.modules.system.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.office2easy.leechee.annotation.Log;
 import com.office2easy.leechee.modules.system.model.SysDict;
-import com.office2easy.leechee.modules.system.model.SysDictType;
 import com.office2easy.leechee.modules.system.service.ISysDictService;
 import com.office2easy.leechee.utils.R;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,6 +31,7 @@ public class SysDictController {
 
     private final ISysDictService dictService;
 
+    @Autowired
     public SysDictController(ISysDictService dictService) {
         this.dictService = dictService;
     }

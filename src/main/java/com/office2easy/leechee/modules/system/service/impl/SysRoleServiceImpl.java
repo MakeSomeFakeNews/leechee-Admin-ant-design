@@ -1,13 +1,13 @@
 package com.office2easy.leechee.modules.system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.office2easy.leechee.modules.system.dao.SysRoleMapper;
 import com.office2easy.leechee.modules.system.dao.SysUserRoleMapper;
 import com.office2easy.leechee.modules.system.model.SysRole;
-import com.office2easy.leechee.modules.system.dao.SysRoleMapper;
 import com.office2easy.leechee.modules.system.model.SysUser;
 import com.office2easy.leechee.modules.system.model.SysUserRole;
 import com.office2easy.leechee.modules.system.service.ISysRoleService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +25,12 @@ import java.util.List;
 @Service
 public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> implements ISysRoleService {
 
+    private final SysUserRoleMapper userRoleMapper;
+    
     @Autowired
-    private SysUserRoleMapper userRoleMapper;
+    public SysRoleServiceImpl(SysUserRoleMapper userRoleMapper) {
+        this.userRoleMapper = userRoleMapper;
+    }
 
     /**
      * 获取用户所有角色

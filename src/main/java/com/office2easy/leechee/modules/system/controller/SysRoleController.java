@@ -49,6 +49,7 @@ public class SysRoleController {
 
     private final ShiroUtils shiroUtils;
 
+    @Autowired
     public SysRoleController(ISysRoleService roleService, ISysPermissionService permissionService, ISysRolePermissionService rolePermissionService, ISysUserRoleService userRoleService, ShiroUtils shiroUtils) {
         this.roleService = roleService;
         this.permissionService = permissionService;

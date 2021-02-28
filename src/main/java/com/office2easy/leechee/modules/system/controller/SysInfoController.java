@@ -5,6 +5,7 @@ import com.office2easy.leechee.modules.system.service.ISysInfoService;
 import com.office2easy.leechee.modules.system.vo.sysinfo.SysInfoVo;
 import com.office2easy.leechee.utils.R;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SysInfoController {
     private final ISysInfoService sysInfoService;
 
+    @Autowired
     public SysInfoController(ISysInfoService sysInfoService) {
         this.sysInfoService = sysInfoService;
     }

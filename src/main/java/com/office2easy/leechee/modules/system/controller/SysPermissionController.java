@@ -37,6 +37,8 @@ public class SysPermissionController extends AbsController {
     private final ISysRoleService roleService;
     private final ISysRolePermissionService rolePermissionService;
     private final ShiroUtils shiroUtils;
+
+    @Autowired
     public SysPermissionController(ISysPermissionService permissionService, ISysRoleService roleService, ISysRolePermissionService rolePermissionService, ShiroUtils shiroUtils) {
         this.permissionService = permissionService;
         this.roleService = roleService;
@@ -61,16 +63,8 @@ public class SysPermissionController extends AbsController {
         permission.setCreateBy(user.getUsername());
         permission.setCreateTime(LocalDateTime.now());
         permissionService.save(permission);
-        //添加权限
         List<SysRole> userRoleList = roleService.getUserRoleList(user);
-        List<SysRolePermission> rolePermissions = new ArrayList<>();
-        for (SysRole sysRole : userRoleList) {
-            SysRolePermission sysRolePermission = new SysRolePermission();
-            sysRolePermission.setPermissionId(permission.getId());
-            sysRolePermission.setRoleId(sysRole.getId());
-            rolePermissions.add(sysRolePermission);
-        }
-        rolePermissionService.saveBatch(rolePermissions);
+        rolePermissionService.savePermissions(permission,userRoleList);
         shiroUtils.removePermission();
         return R.ok().data(permission);
     }

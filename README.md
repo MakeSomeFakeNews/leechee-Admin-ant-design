@@ -27,7 +27,7 @@
 * 后台启动： 修改application.yml中数据库配置以及redis地址,运行LeecheeApplication.java即可启动
 * 前端启动：yarn install 安装依赖,yarn run serve 或者 npm install --> npm run serve
 * 浏览器访问：localhost:8000
-
+* 前端传送门： https://github.com/MakeSomeFakeNews/leechee-ant-design-pro
 ## 目录结构
 
 ```
@@ -60,4 +60,5 @@
 │  │      ├─static
 │  │      └─templates
 ```
+
 

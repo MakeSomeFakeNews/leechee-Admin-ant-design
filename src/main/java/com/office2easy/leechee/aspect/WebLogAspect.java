@@ -13,6 +13,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.stereotype.Component;
 
@@ -29,6 +30,7 @@ public class WebLogAspect {
 
     private final ISysLogService logService;
 
+    @Autowired
     public WebLogAspect(UserUtils userUtils, ISysLogService logService) {
         this.userUtils = userUtils;
         this.logService = logService;

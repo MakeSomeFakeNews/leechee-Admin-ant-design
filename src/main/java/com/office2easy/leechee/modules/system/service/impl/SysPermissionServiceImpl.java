@@ -9,6 +9,7 @@ import com.office2easy.leechee.modules.system.model.SysRole;
 import com.office2easy.leechee.modules.system.model.SysRolePermission;
 import com.office2easy.leechee.modules.system.service.ISysPermissionService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -29,6 +30,7 @@ public class SysPermissionServiceImpl extends ServiceImpl<SysPermissionMapper, S
 
     private final SysRolePermissionMapper rolePermissionMapper;
 
+    @Autowired
     public SysPermissionServiceImpl(SysRolePermissionMapper rolePermissionMapper) {
         this.rolePermissionMapper = rolePermissionMapper;
     }
