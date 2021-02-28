@@ -1,7 +1,5 @@
 package com.office2easy.leechee.utils;
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
@@ -10,6 +8,7 @@ import org.springframework.stereotype.Component;
 public class ShiroUtils {
     private final RedisTemplate redisTemplate;
 
+    @Autowired
     public ShiroUtils(RedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
